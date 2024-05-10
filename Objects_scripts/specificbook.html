@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+
+    <script>
+        // Define Book objects
+        let books = [
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                pages: 218,
+                price: 9.99
+            },
+            {
+                title: "A new book",
+                author: "Tom Hanks",
+                pages: 218,
+                price: 9.99           
+            },
+        
+        ];
+        
+        // Function to generate book details
+        function displayBookDetails1(book) {
+            let bookDetails0 = "Title: " + book.title + ", Price: $" + book.price + ", Author: " + book.author + ", Pages: " + book.pages;
+            document.getElementById("bookDetails").innerHTML = bookDetails0;
+        }
+        function displayBookDetails(book) {
+            let bookDetails1 = "Title: " + book.title + ", Price: $" + book.price + ", Author: " + book.author + ", Pages: " + book.pages;
+            document.getElementById("bookDetails").innerHTML = bookDetails1;
+        }
+        
+        // Function to calculate total price of book 1 and book 2
+        function calculateTotalPrice() {
+            let totalPrice = books[0].price + books[1].price;
+            document.getElementById("totalPrice").innerHTML = "Total Price: $" + totalPrice;
+        }
+    </script>
+</head>
+<body>
+    <h1>Book Details</h1>
+    <div id="bookDetails"></div>
+    <button onclick="displayBookDetails1(books[0])">Show the first book</button>
+    <br>
+    <div id="bookDetails"></div>
+    <button onclick="displayBookDetails(books[1])">Show the second book</button>
+    <br>
+    <button onclick="calculateTotalPrice()">Calculate Total Price</button>
+    <div id="totalPrice"></div>
+</body>
+</html>

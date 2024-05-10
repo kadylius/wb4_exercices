@@ -11,13 +11,12 @@
             author: "F. Scott Fitzgerald",
             pages: 218,
 
-        
             // Method to get book details
             getDetails: function() {
                 return "Title: " + this.title + ", Author: " + this.author + ", Pages: " + this.pages;
             }
         };
-        // book 2
+        
         let book2 = {
             title: "A new book",
             author: "Thom Hanks",
@@ -25,21 +24,26 @@
             
             // Method to get book details
             getDetails: function() {
-                console.log()
                 return "Title: " + this.title + ", Author: " + this.author + ", Pages: " + this.pages;
             }
         };
-
+        
         // Function to display book details
         function displayBookDetails() {
             let bookDetails = book.getDetails();
             document.getElementById("bookDetails").innerText = bookDetails;
+
+            let bookDetails2 = book2.getDetails(); // Corrected to use book2
+            document.getElementById("bookDetails2").innerText = bookDetails2;
         }
+        
     </script>
+    
 </head>
 <body>
     <h1>Book Details</h1>
     <div id="bookDetails"></div>
+    <div id="bookDetails2"></div> <!-- Added div for second book details -->
     <button onclick="displayBookDetails()">Show Details</button>
 </body>
 </html>

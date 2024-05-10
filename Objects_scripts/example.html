@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Movie Generator</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* Add your custom styles here */
+    .movie-img {
+      max-width: 100%; /* Adjust the image width as needed */
+      height: auto;
+    }
+    .movie-display {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1 class="text-center mb-4">Random Movie Generator</h1>
+        <div class="text-center mb-4">
+          <button id="randomMovieBtn" class="btn btn-primary">Generate Random Movie</button>
+        </div>
+        <div class="text-center mb-4">
+          <select id="movieDropdown" class="form-select">
+            <option value="" selected disabled>Select a Movie</option>
+            <!-- Populate dropdown options using JavaScript -->
+          </select>
+        </div>
+        <div id="movieDisplay" class="movie-display">
+          <!-- Movie title and image will be displayed here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <!-- Your custom JavaScript -->
+  <script>
+    // Array of movies with titles and image URLs
+    const movies = [
+      {
+        title: "Forrest Gump",
+        imageURL: "https://www.hollywoodreporter.com/wp-content/uploads/2016/07/forrest_gump_still.jpg"
+      },
+      {
+        title: "Princess diaries",
+        imageURL: "https://lumiere-a.akamaihd.net/v1/images/p_theprincessdiaries_19875_2ef7e437.jpeg"
+      },
+      {
+        title: "The Green Mile",
+        imageURL: "https://m.media-amazon.com/images/I/71Q6YhYVSKL._AC_UF894,1000_QL80_.jpg"
+      },
+      {
+        title: "The Shawshank Redemption",
+        imageURL: "https://m.media-amazon.com/images/I/815qtzaP9iL._AC_UF1000,1000_QL80_.jpg"
+      }
+      // Add more movie objects as needed
+    ];
+
+    // Function to randomly select a movie title and display its image
+    function displayRandomMovie() {
+      const randomIndex = Math.floor(Math.random() * movies.length);
+      const randomMovie = movies[randomIndex];
+      const movieDisplay = document.getElementById("movieDisplay");
+      movieDisplay.innerHTML = `
+        <h2>${randomMovie.title}</h2>
+        <img src="${randomMovie.imageURL}" alt="${randomMovie.title}" class="img-fluid movie-img">
+      `;
+    }
+
+    // Function to populate dropdown with movie titles
+    function populateDropdown() {
+      const movieDropdown = document.getElementById("movieDropdown");
+      movies.forEach(movie => {
+        const option = document.createElement("option");
+        option.text = movie.title;
+        option.value = movie.title;
+        movieDropdown.appendChild(option);
+      });
+    }
+
+    // Event listener for the random movie button
+    document.getElementById("randomMovieBtn").addEventListener("click", displayRandomMovie);
+
+    // Event listener for the movie dropdown
+    document.getElementById("movieDropdown").addEventListener("change", function() {
+      const selectedMovie = this.value;
+      const selectedMovieObj = movies.find(movie => movie.title === selectedMovie);
+      if (selectedMovieObj) {
+        const movieDisplay = document.getElementById("movieDisplay");
+        movieDisplay.innerHTML = `
+          <h2>${selectedMovieObj.title}</h2>
+          <img src="${selectedMovieObj.imageURL}" alt="${selectedMovieObj.title}" class="img-fluid movie-img">
+        `;
+      }
+    });
+
+    // Populate dropdown on page load
+    window.onload = function() {
+      populateDropdown();
+      displayRandomMovie(); // Display a random movie on page load
+    };
+  </script>
+</body>
+</html>

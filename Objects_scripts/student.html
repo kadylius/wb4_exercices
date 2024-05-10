@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Students</title>
+</head>
+</select>
+<body>
+    <label for="studentDropdown">Choose a student:</label>
+    <select id="studentDropdown" name="dropdown"> 
+    </select>
+    <script>
+        // Array of student names
+            const students = ["Alice", "Bob", "Charlie", "David", "Eva"];
+
+            // Get the dropdown element
+            const dropdown = document.getElementById('studentDropdown');
+            // Populate the dropdown using a for loop
+            // to display multiple loop type
+            // for eACH STUDENT, CREATE A DROPDOWN MENU
+            students.forEach((student, index) => {
+    dropdown.innerHTML += `<option value="${students[index]}">${students[index]}</option>`;
+});           
+    </script>
+   
+</body>
+</html>
+
